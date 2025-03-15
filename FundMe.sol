@@ -1,29 +1,35 @@
-
-
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.9;
-import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {PriceConverter} from "PriceConvertor.sol";
 
 contract FundMe{
+    using PriceConverter for uint256;
     uint256 public minusd = 5e18;
+
+    address[] public funders;
     mapping (address => uint256) public addressToAmountFunded;
+    address public owner;
+
+    constructor(){
+        owner = msg.sender;
+    }
     function fund() public payable {
-        require(getConversionRate(msg.value) > minusd, "not enough eth");
+        require(msg.value.getConversionRate() > minusd, "not enough eth");
         addressToAmountFunded[msg.sender] += msg.value;
     }
-    // function withdraw() public {}
+     function withdraw() public {
+        require(msg.sender==owner, "must be owner");
+        for(uint256 index = 0; index<funders.length; index++){
+            address funder = funders[index];
+            addressToAmountFunded[funder]=0;
+        }
+        funders = new address[](0);
+        ////
+        (bool callsuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callsuccess, "callFailed");
+        // idek kn0w whta this is it just send of recieve etherium ir blockchain currency token
+        ////
+     }
 
-    function getPrice() public view returns(uint256) {
-        // add 0x694AA1769357215DE4FAC081bf1f309aDC325306
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-        (,int256 price,,,)=priceFeed.latestRoundData();
-        //returns price of usd in terms of eth
-        return uint256(price * 1e10);
-    }
-    function getConversionRate(uint ethamount) public view returns (uint256){
-        uint256 price = getPrice();
-        uint256 priceinusd = (price * ethamount)/1e18;
-        return priceinusd; 
-
-    }
+   
 }
