@@ -17,7 +17,7 @@ contract FundMe{
         require(msg.value.getConversionRate() > minusd, "not enough eth");
         addressToAmountFunded[msg.sender] += msg.value;
     }
-     function withdraw() public {
+     function withdraw() public onlyOwner {
         require(msg.sender==owner, "must be owner");
         for(uint256 index = 0; index<funders.length; index++){
             address funder = funders[index];
@@ -29,6 +29,10 @@ contract FundMe{
         require(callsuccess, "callFailed");
         // idek kn0w whta this is it just send of recieve etherium ir blockchain currency token
         ////
+     }
+     modifier onlyOwner(){
+        require(msg.sender==owner, "not owner");//first see whjether this is yes
+         _;//then do whatwever else in the fucniton
      }
 
    
