@@ -1,0 +1,66 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Container */
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Input Fields */
+input {
+  width: calc(100% - 80px);
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Flex Layout for Input & Fund Button */
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Fund Button */
+.fund-button {
+  background-color: #28a745;
+}
+
+.fund-button:hover {
+  background-color: #1e7e34;
+}
