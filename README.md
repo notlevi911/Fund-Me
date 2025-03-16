@@ -29,4 +29,7 @@ A **decentralized crowdfunding DApp** that allows users to connect their wallet,
 ```sh
 git clone https://github.com/YOUR-USERNAME/FundMe-DApp.git
 cd FundMe-DApp
+```
+### 1️⃣ Start server
+```sh
 npm start
