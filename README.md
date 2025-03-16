@@ -18,7 +18,7 @@ A **decentralized crowdfunding DApp** that allows users to connect their wallet,
 ## 🛠 Tech Stack
 
 - **Frontend:** React, Vite, ethers.js, Web3Modal  
-- **Smart Contract:** Solidity, Hardhat  
+- **Smart Contract:** Solidity  
 - **Blockchain:** Ethereum Testnet (Goerli, Sepolia, etc.)  
 
 ---
@@ -29,3 +29,4 @@ A **decentralized crowdfunding DApp** that allows users to connect their wallet,
 ```sh
 git clone https://github.com/YOUR-USERNAME/FundMe-DApp.git
 cd FundMe-DApp
+npm start
